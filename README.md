@@ -130,13 +130,7 @@ DC mini/
 4. **Consistency** — Metadata in centralized SQLite database
 5. **Distributed Communication** — REST APIs between nodes
 
-## 👨‍🎓 Academic Info
 
-- **University**: Mumbai University
-- **Branch**: Computer Engineering
-- **Semester**: 8
-- **Subject**: Distributed Computing
-- **Project Type**: Mini Project
 
 ---
 
