@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CloudVault Dashboard - Upload, download, and manage your distributed files">
+    <title>CloudVault — Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- ═══════════════════════════════════════════
+             NAVIGATION BAR
+             ═══════════════════════════════════════════ -->
+        <nav class="navbar">
+            <div class="brand">
+                <div class="brand-icon">☁️</div>
+                <span>CloudVault</span>
+            </div>
+            <div class="user-info">
+                <span class="username" id="usernameDisplay">Loading...</span>
+                <button class="btn-logout" id="logoutBtn" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- ═══════════════════════════════════════════
+             MAIN CONTENT
+             ═══════════════════════════════════════════ -->
+        <div class="main-content">
+
+            <!-- ─── Stats Overview ─── -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-value" id="statFiles">0</div>
+                    <div class="stat-label">Total Files</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statStorage">0 B</div>
+                    <div class="stat-label">Total Storage Used</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statNodes">0/0</div>
+                    <div class="stat-label">Healthy Nodes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statReplication">2x</div>
+                    <div class="stat-label">Replication Factor</div>
+                </div>
+            </div>
+
+            <!-- ─── Storage Nodes Status ─── -->
+            <h2 class="section-title">🖥️ Storage Nodes</h2>
+            <div class="nodes-grid" id="nodesGrid">
+                <!-- Node cards are populated dynamically by JS -->
+                <div class="node-card">
+                    <div class="node-header">
+                        <span class="node-name">Loading nodes...</span>
+                        <span class="node-status-badge unknown">checking</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── File Upload Area ─── -->
+            <div class="upload-section">
+                <h2 class="section-title">📤 Upload File</h2>
+                <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop or Click to Upload</h3>
+                    <p>Maximum file size: 50 MB — Files will be chunked and distributed across nodes</p>
+                    <input type="file" id="fileInput" onchange="handleFileSelect(event)">
+                </div>
+                <div class="upload-progress" id="uploadProgress">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Uploading...</p>
+                </div>
+            </div>
+
+            <!-- ─── Files Table ─── -->
+            <div class="files-section">
+                <h2 class="section-title">📂 Your Files</h2>
+                <div class="files-card">
+                    <table class="files-table" id="filesTable">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Size</th>
+                                <th>Chunks</th>
+                                <th>Uploaded</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="filesTableBody">
+                            <tr>
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📭</div>
+                                        <p>No files uploaded yet. Upload your first file above!</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

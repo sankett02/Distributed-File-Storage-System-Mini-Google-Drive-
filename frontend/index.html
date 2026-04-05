@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Distributed File Storage System - A Mini Google Drive built with distributed computing concepts">
+    <title>CloudVault — Distributed File Storage</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════
+         AUTH CONTAINER (Login & Signup)
+         ═══════════════════════════════════════════ -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">☁️</div>
+                <h1>CloudVault</h1>
+                <p class="subtitle">Distributed File Storage System</p>
+            </div>
+
+            <!-- Tab Switcher: Login / Signup -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">
+                    Login
+                </button>
+                <button class="auth-tab" id="signupTab" onclick="switchTab('signup')">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Alert Message (shown on errors or success) -->
+            <div class="alert alert-error" id="authAlert"></div>
+            <div class="alert alert-success" id="authSuccess"></div>
+
+            <!-- ─── Login Form ─── -->
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="loginBtn">
+                    Login
+                </button>
+            </form>
+
+            <!-- ─── Signup Form (hidden by default) ─── -->
+            <form id="signupForm" style="display: none;" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" placeholder="Choose a username (min 3 chars)" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Choose a password (min 4 chars)" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="signupBtn">
+                    Create Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+</body>
+</html>

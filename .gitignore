@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Project specific
+master/database.db
+storage_node/storage/
+master/logs/
+master/master_output.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+.DS_Store
