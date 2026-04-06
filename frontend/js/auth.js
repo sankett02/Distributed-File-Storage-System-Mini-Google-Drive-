@@ -5,7 +5,7 @@
  * Communicates with the master node's auth API.
  */
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "";
 
 // ──────────────────────────────────────────────
 // Tab Switching (Login ↔ Signup)
