@@ -9,7 +9,7 @@
  *   - Stats display
  */
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = ""; // Relative path to support localhost, 127.0.0.1, or local IP
 
 // Auto-refresh interval for node status (ms)
 const REFRESH_INTERVAL = 10000; // 10 seconds
