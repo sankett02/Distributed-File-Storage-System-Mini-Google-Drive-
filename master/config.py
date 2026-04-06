@@ -43,8 +43,8 @@ MAX_FILE_SIZE = 50 * 1024 * 1024
 # ──────────────────────────────────────────────
 
 # Number of copies for each chunk (including the primary)
-# With 3 nodes and REPLICATION_FACTOR=2, each chunk is on 2 nodes
-REPLICATION_FACTOR = 2
+# With 3 nodes and REPLICATION_FACTOR=3, each chunk is on all 3 nodes
+REPLICATION_FACTOR = 3
 
 # ──────────────────────────────────────────────
 # Health Monitor Settings
@@ -62,18 +62,12 @@ HEALTH_CHECK_TIMEOUT = 3
 
 # SQLite database path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# On Vercel, the filesystem is read-only except for /tmp
-if os.environ.get("VERCEL") or os.environ.get("VERCEL_ENV"):
-    DATABASE_PATH = "/tmp/database.db"
-    LOG_DIR = "/tmp/logs"
-else:
-    DATABASE_PATH = os.path.join(BASE_DIR, "database.db")
-    LOG_DIR = os.path.join(BASE_DIR, "logs")
+DATABASE_PATH = os.path.join(BASE_DIR, "database.db")
 
 # ──────────────────────────────────────────────
 # Logging Settings
 # ──────────────────────────────────────────────
 
+LOG_DIR = os.path.join(BASE_DIR, "logs")
 LOG_FILE = os.path.join(LOG_DIR, "master.log")
 os.makedirs(LOG_DIR, exist_ok=True)
