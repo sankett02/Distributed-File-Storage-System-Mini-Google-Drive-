@@ -62,12 +62,18 @@ HEALTH_CHECK_TIMEOUT = 3
 
 # SQLite database path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATABASE_PATH = os.path.join(BASE_DIR, "database.db")
+
+# On Vercel, the filesystem is read-only except for /tmp
+if os.environ.get("VERCEL") or os.environ.get("VERCEL_ENV"):
+    DATABASE_PATH = "/tmp/database.db"
+    LOG_DIR = "/tmp/logs"
+else:
+    DATABASE_PATH = os.path.join(BASE_DIR, "database.db")
+    LOG_DIR = os.path.join(BASE_DIR, "logs")
 
 # ──────────────────────────────────────────────
 # Logging Settings
 # ──────────────────────────────────────────────
 
-LOG_DIR = os.path.join(BASE_DIR, "logs")
 LOG_FILE = os.path.join(LOG_DIR, "master.log")
 os.makedirs(LOG_DIR, exist_ok=True)
